@@ -71,10 +71,11 @@ def setup_training_loop_kwargs(
     # General options: gpus, snap, metrics, seed
     # ------------------------------------------
 
+    # GPU 설정
     if gpus is None:
         gpus = 1
-    assert isinstance(gpus, int)
-    if not (gpus >= 1 and gpus & (gpus - 1) == 0):
+    assert isinstance(gpus, int) 
+    if not (gpus >= 1 and gpus & (gpus - 1) == 0): # <--2의 배수 제대로 구하는거 맞는지 모르겠음?
         raise UserError('--gpus must be a power of two')
     args.num_gpus = gpus
 
